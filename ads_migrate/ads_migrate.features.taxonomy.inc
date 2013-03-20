@@ -13,7 +13,7 @@ function ads_migrate_taxonomy_default_vocabularies() {
       'name' => 'Categories',
       'machine_name' => 'categories',
       'description' => NULL,
-      'hierarchy' => '2',
+      'hierarchy' => '0',
       'module' => '',
       'weight' => '0',
       'rdf_mapping' => array(
@@ -59,7 +59,7 @@ function ads_migrate_taxonomy_default_vocabularies() {
       'name' => 'Places',
       'machine_name' => 'places',
       'description' => NULL,
-      'hierarchy' => '2',
+      'hierarchy' => '0',
       'module' => '',
       'weight' => '0',
       'rdf_mapping' => array(
