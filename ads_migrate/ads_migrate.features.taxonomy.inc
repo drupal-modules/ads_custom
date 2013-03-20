@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * ads_custom.features.taxonomy.inc
+ * ads_migrate.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function ads_custom_taxonomy_default_vocabularies() {
+function ads_migrate_taxonomy_default_vocabularies() {
   return array(
     'categories' => array(
       'name' => 'Categories',

@@ -1,9 +1,9 @@
-name = ads_custom
-description = Provides custom structure for use with ads module
+name = ads_migrate
+description = Provides structure migrated from D5 version of ads
 core = 7.x
 package = Ads
 version = 7.x-0.1
-project = ads_custom
+project = ads_migrate
 dependencies[] = features
 dependencies[] = taxonomy
 features[features_api][] = api:1
