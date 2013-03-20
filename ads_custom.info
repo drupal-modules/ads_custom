@@ -1,0 +1,12 @@
+name = ads_custom
+description = Provides custom structure for use with ads module
+core = 7.x
+package = Ads
+version = 7.x-0.1
+project = ads_custom
+dependencies[] = features
+dependencies[] = taxonomy
+features[features_api][] = api:1
+features[taxonomy][] = categories
+features[taxonomy][] = locations
+features[taxonomy][] = places
