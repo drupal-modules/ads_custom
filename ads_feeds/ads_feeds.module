@@ -8,17 +8,6 @@
  * Implements hook_menu().
  */
 function ads_feeds_menu() {
-  $menu['admin/config/ads/ads_feeds'] = array(
-    'type'             => MENU_NORMAL_ITEM,
-    'file'             => 'ads_feeds.admin.inc',
-    'title'            => 'Ads Feeds',
-    'description'      => 'Configure Ads Feeds settings',
-    'position'         => 'left',
-    'page callback'    => 'drupal_goto',
-    'page arguments'   => array('/admin/config/ads/feeds'),
-    'access arguments' => array('administer ads'),
-  );
-
   $menu['admin/config/ads/feeds'] = array(
     'type'             => MENU_NORMAL_ITEM,
     'file'             => 'ads_feeds.admin.inc',
