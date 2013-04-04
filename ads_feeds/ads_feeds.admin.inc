@@ -58,5 +58,5 @@ function ads_feeds_settings_form_validate($form, &$form_state) {
  */
 function ads_feeds_settings_action_import_feeds($form, &$form_state) {
   ads_feeds_import();
-  drupal_set_message(t('Feeds has been imported.', 'status'));
+  drupal_set_message(t('Feeds has been imported.'), 'status');
 }
