@@ -4,6 +4,8 @@
  * Ads_feeds module, a part of Ads infrastructure.
  */
 
+include_once 'ads_feeds.features.inc';
+
 /**
  * Implements hook_menu().
  */
