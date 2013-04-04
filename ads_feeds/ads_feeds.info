@@ -1,0 +1,12 @@
+name = ads_feeds
+description = Provides feeds importer functionality
+core = 7.x
+package = Ads
+php = 5.2.4
+version = 7.x-0.1
+project = ads_feeds
+dependencies[] = ads
+dependencies[] = feeds
+configure = admin/config/ads/feeds
+features[features_api][] = api:1
+files[] = ads_feeds.module
