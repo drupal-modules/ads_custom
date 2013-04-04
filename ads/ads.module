@@ -1,0 +1,51 @@
+<?php
+/**
+ * @file
+ * Ads module, base part of Ads infrastructure.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function ads_menu() {
+  $menu['admin/config/ads'] = array(
+    'type'             => MENU_NORMAL_ITEM,
+    'file'             => 'ads.admin.inc',
+    'title'            => 'Ads Settings',
+    'description'      => 'Configure Ads and Ads Extensions settings',
+    'position'         => 'left',
+    'weight'           => -20,
+    'page callback'    => 'drupal_goto',
+    'page arguments'   => array('/admin/config/ads/settings'),
+    'access arguments' => array('administer ads'),
+  );
+
+  $menu['admin/config/ads/settings'] = array(
+    'type'             => MENU_NORMAL_ITEM,
+    'file'             => 'ads.admin.inc',
+    'title'            => 'Ads',
+    'description'      => 'Ads Settings',
+    'page callback'    => 'drupal_get_form',
+    'page arguments'   => array('ads_settings_form'),
+    'access arguments' => array('administer ads'),
+    'weight'           => -10,
+  );
+
+  $menu['admin/config/ads/settings/ads'] = $menu['admin/config/ads/settings'];
+  $menu['admin/config/ads/settings/ads']['type'] = MENU_DEFAULT_LOCAL_TASK;
+
+  return $menu;
+}
+
+/**
+ * Implements hook_init().
+ */
+function ads_init() {
+  if (arg(0) == 'admin' && arg(1) == 'config' && arg(2) == 'ads') {
+    // Adding administrative pages CSSes.
+    // @FIXIT: I see that there are problem loading CSSes in any way from this
+    // point. Please make sure to enable CSS compression before we solve the
+    // problem.
+    drupal_add_css(drupal_get_path('module', 'ads') . '/css/ads-admin.css');
+  }
+}

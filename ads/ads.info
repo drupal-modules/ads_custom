@@ -1,0 +1,9 @@
+name = ads
+description = Ads base functionality
+core = 7.x
+package = Ads
+version = 7.x-0.1
+project = ads
+configure = admin/config/ads
+features[features_api][] = api:1
+files[] = ads.module
