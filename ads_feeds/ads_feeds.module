@@ -1,0 +1,89 @@
+<?php
+/**
+ * @file
+ * Ads_feeds module, a part of Ads infrastructure.
+ */
+
+include_once 'ads_feeds.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function ads_feeds_menu() {
+  $menu['admin/config/ads/feeds'] = array(
+    'type'             => MENU_NORMAL_ITEM,
+    'file'             => 'ads_feeds.admin.inc',
+    'title'            => 'Feeds',
+    'description'      => 'Feeds Importer Settings',
+    'page callback'    => 'drupal_get_form',
+    'page arguments'   => array('ads_feeds_settings_form'),
+    'access arguments' => array('administer ads'),
+  );
+
+  $menu['admin/config/ads/settings/feeds'] = $menu['admin/config/ads/feeds'];
+  $menu['admin/config/ads/settings/feeds']['type'] = MENU_LOCAL_TASK;
+
+  return $menu;
+}
+
+/**
+ * Imports content from all the configured feeds sources using default importer.
+ */
+function ads_feeds_import() {
+  $feeds_sources = array_map('trim', preg_split('/[\r\n]+/', variable_get('ads_feeds_cfg_feeds_sources', '')));
+
+  if (drupal_is_cli()) {
+    // Function ran from the drush command.
+    drush_print(dt('ads_feeds: Initiating import of previously configured feeds sources.'));
+  }
+
+  // Including required "ads_feeds_drush_import" function.
+  module_load_include('inc', 'ads_feeds', 'drush/ads_feeds.drush');
+
+  foreach ($feeds_sources as $feed_source) {
+    if (!empty($feed_source)) {
+      // Importing one feeds source at a time.
+      ads_feeds_import_ex($feed_source);
+    }
+  }
+}
+
+/**
+ * Imports content from the specified URL using default or custom feed importer.
+ *
+ * @param string $url
+ *   Feed source URL.
+ * @param string $importer_name
+ *   Optional. Custom feed importer name.
+ */
+function ads_feeds_import_ex($url, $importer_name = NULL) {
+  if ($importer_name === NULL) {
+    // Importer not specified, using default one.
+    $importer_name = 'ads_feeds_default_importer';
+  }
+
+  if (drupal_is_cli()) {
+    // Function ran from the drush command.
+    drush_print(dt('ads_feeds: Importing feeds from the URL "@url" using feed importer "@importer_name"...', array(
+      '@url'           => $url,
+      '@importer_name' => $importer_name,
+    )));
+  }
+
+  $feed = feeds_source($importer_name);
+
+  $feed->addConfig(array(
+    'FeedsHTTPFetcher' => array(
+      'feed'    => $feed,
+      'context' => array(),
+      'source'  => $url,
+    )));
+
+  while ($feed->import() != FEEDS_BATCH_COMPLETE) {
+  }
+
+  if (drupal_is_cli()) {
+    // Function ran from the drush command.
+    drush_print(dt('ads_feeds: Done.'));
+  }
+}
