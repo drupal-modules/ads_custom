@@ -11,7 +11,7 @@ include_once 'ads_feeds.features.inc';
  */
 function ads_feeds_menu() {
   $menu['admin/config/ads/feeds'] = array(
-    'type'             => MENU_NORMAL_ITEM,
+    'type'             => MENU_NORMAL_ITEM | MENU_LOCAL_TASK,
     'file'             => 'ads_feeds.admin.inc',
     'title'            => 'Feeds',
     'description'      => 'Feeds Importer Settings',
@@ -19,9 +19,6 @@ function ads_feeds_menu() {
     'page arguments'   => array('ads_feeds_settings_form'),
     'access arguments' => array('administer ads'),
   );
-
-  $menu['admin/config/ads/settings/feeds'] = $menu['admin/config/ads/feeds'];
-  $menu['admin/config/ads/settings/feeds']['type'] = MENU_LOCAL_TASK;
 
   return $menu;
 }
