@@ -11,6 +11,6 @@
 }
 
 #ads-admin .ads-logo {
-  background: transparent url('http://cdn2.iconfinder.com/data/icons/free-mobile-icon-kit/64/Ads.png') center center no-repeat; margin: 0 0 20px 0;
-  height: 64px;
+  font-size: 46px;
+  padding: 20px;
 }
