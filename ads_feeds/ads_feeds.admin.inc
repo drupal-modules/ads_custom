@@ -12,6 +12,7 @@ function ads_feeds_settings_form() {
   // General form container.
   $form['ads_feeds']['#prefix'] = '<div id="ads-admin">';
   $form['ads_feeds']['#suffix'] = '</div>';
+  $form['#attached']['css'] = array(drupal_get_path('module', 'ads') . '/css/ads-admin.css');
 
   // "Feeds sources"
   $form['ads_feeds']['ads_feeds_cfg_feeds_sources_fieldset'] = array(
