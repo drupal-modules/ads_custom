@@ -17,3 +17,4 @@ features[feeds_importer][] = ads_feeds_default_importer
 features[variable][] = ads_feeds_cfg_feeds_event_site_install_import
 features[variable][] = ads_feeds_cfg_feeds_sources
 files[] = ads_feeds.module
+datestamp = "1366649833"
