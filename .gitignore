@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Ignore drush generated files.
 src
 
@@ -7,3 +8,7 @@ build.properties
 # Ignore Finder metadata files on Mac
 .DS_Store
 
+=======
+# Ignore Finder metadata files on Mac
+.DS_Store
+>>>>>>> 6e613a932ada9008b289d447ae273ea61b65606d

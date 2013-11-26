@@ -1,0 +1,9 @@
+name = ads_migrate
+description = Provides structure migrated from D5 version of ads
+core = 7.x
+package = Ads
+php = 5.2.4
+version = 7.x-0.1
+project = ads_migrate
+dependencies[] = features
+features[features_api][] = api:1
